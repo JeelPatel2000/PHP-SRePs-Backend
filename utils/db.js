@@ -13,7 +13,8 @@ class Database {
   _connect() {
     mongoose
       .connect(
-        `mongodb+srv://${server}/${database}?retryWrites=true&w=majority`
+        `mongodb+srv://${server}/${database}?retryWrites=true&w=majority`,
+        { useNewUrlParser: true, useUnifiedTopology: true }
       )
       .then(() => {
         console.log("Database connection successful");

@@ -16,7 +16,6 @@ router.get("/add", (req, res) => {
   // creating the mongoose data model
   let new_product = new ProductModel({
     name: "Medicine 1",
-    category: "Category 1",
     price: 100.59,
     stockCount: 200,
   });
