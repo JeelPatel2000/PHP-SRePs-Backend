@@ -8,9 +8,8 @@ router.get("/", (req, res) => {
   res.send("Hello Product");
 });
 
-router.get("/list", async (req, res) => {
-  let result = await ProductModel.find();
-  res.send(result);
+router.get("/list",  (req, res) => {
+  ProductModel.then((result)=>res.send(result));
 });
 
 router.get("/add", (req, res) => {
