@@ -22,4 +22,4 @@ app.get("/", (req, res) => {
 
 app.use("/products", productRoute);
 
-app.listen(3001, () => console.log(`Server started on port ${3001}`));
+app.listen(process.env.PORT, () => console.log(`Server started on port ${process.env.PORT}`));
