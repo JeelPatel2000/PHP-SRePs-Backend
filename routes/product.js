@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const _db = require("../utils/db");
 const ProductModel = require("../models/productModel");
+const { Mongoose } = require("mongoose");
 
 router.get("/", (req, res) => {
   res.send("Hello Product");
@@ -9,7 +10,7 @@ router.get("/", (req, res) => {
 
 router.get("/list", async (req, res) => {
   let result = await ProductModel.find();
-  await res.send(result);
+  res.send(result);
 });
 
 router.get("/add", (req, res) => {
@@ -44,9 +45,18 @@ router.get("/delete/:id", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-router.get("/edit", (req, res) => {
+router.post("/edit", (req, res) => {
   //database call
   //edit the data
+  ProductModel.findOneAndUpdate(
+    { _id: req.body._id },
+    req.body,
+    { new: true },
+    (err, result) => {
+      if (err) return res.status(500).send(err);
+      return res.send(result);
+    }
+  );
 });
 
 module.exports = router;
