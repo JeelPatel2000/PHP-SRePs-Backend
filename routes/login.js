@@ -4,16 +4,16 @@ const express = require("express");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
-  let user = await User.findOne({ username: req.body.username });
-  if (!user) return res.status(400).send("Invalid email or password.");
+// router.post("/", async (req, res) => {
+//   let user = await User.findOne({ username: req.body.username });
+//   if (!user) return res.status(400).send("Invalid email or password.");
 
-  const validPassword = req.body.password === user.password;
-  if (!validPassword) return res.status(400).send("Invalid email or password");
+//   const validPassword = req.body.password === user.password;
+//   if (!validPassword) return res.status(400).send("Invalid email or password");
 
-  const token = user.generateAuthToken();
+//   const token = user.generateAuthToken();
 
-  res.send(token);
-});
+//   res.send(token);
+// });
 
 module.exports = router;
