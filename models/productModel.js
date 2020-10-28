@@ -6,7 +6,7 @@ let productSchema = new mongoose.Schema({
   price: Number,
   creationDate: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
   stockCount: Number,
 });
