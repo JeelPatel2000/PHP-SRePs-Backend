@@ -9,7 +9,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/list",  (req, res) => {
-  ProductModel.then((result)=>res.send(result));
+  ProductModel.find()
+    .then((result)=>res.send(result));
 });
 
 router.get("/add", (req, res) => {
